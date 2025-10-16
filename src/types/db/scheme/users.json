@@ -1,0 +1,37 @@
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'createdAt',
+      'firstName',
+      'telegramId'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'objectId'
+      },
+      createdAt: {
+        bsonType: 'date'
+      },
+      firstName: {
+        bsonType: 'string'
+      },
+      telegramId: {
+        bsonType: 'int'
+      },
+      lastName: {
+        bsonType: [
+          'string',
+          'null'
+        ]
+      },
+      userName: {
+        bsonType: [
+          'string',
+          'null'
+        ]
+      }
+    }
+  }
+}
