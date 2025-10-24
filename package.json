@@ -15,7 +15,7 @@
   "type": "module",
   "main": "src/core/bot.ts",
   "scripts": {
-    "dev": "node --experimental-strip-types --watch src/core/bot.ts"
+    "start": "node --experimental-strip-types --watch src/core/bot.ts"
   },
   "dependencies": {
     "@grammyjs/storage-mongodb": "^2.5.1",
