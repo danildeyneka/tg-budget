@@ -16,10 +16,10 @@ export const initHealthServer = () => {
 
   healthServer.listen(PORT, () => {
     console.log('Server is listening on port ' + PORT)
-  })
 
-  if (!serverUrl || isDev) return
-  setInterval(() => ping(serverUrl!), FOURTEEN_MINS)
+    if (!serverUrl || isDev) return
+    setInterval(() => ping(serverUrl!), FOURTEEN_MINS)
+  })
 }
 
 async function ping(server: string) {
