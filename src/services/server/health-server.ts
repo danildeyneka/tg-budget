@@ -1,7 +1,7 @@
 import { createServer } from 'node:http'
 
 const PORT = process.env.PORT || 3000
-const FOURTEEN_MINS = 4 * 60 * 10_000
+const FOURTEEN_MINS = 14 * 60 * 10_000
 
 export const initHealthServer = () => {
   const isDev = !!process.env.DEV_MODE
