@@ -1,7 +1,7 @@
 import { createServer } from 'node:http'
 
 const PORT = process.env.PORT || 3000
-const FOUR_MINUTES = 4 * 60 * 10_000
+const FOURTEEN_MINS = 4 * 60 * 10_000
 
 export const initHealthServer = () => {
   const isDev = !!process.env.DEV_MODE
@@ -18,8 +18,8 @@ export const initHealthServer = () => {
     console.log('Server is listening on port ' + PORT)
   })
 
-  if (!serverUrl && !isDev) return
-  setInterval(() => ping(serverUrl!), FOUR_MINUTES)
+  if (!serverUrl || isDev) return
+  setInterval(() => ping(serverUrl!), FOURTEEN_MINS)
 }
 
 async function ping(server: string) {
