@@ -1,6 +1,6 @@
 import { createServer } from 'node:http'
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 10000 // render.com default port
 const FOURTEEN_MINS = 14 * 60 * 10_000
 
 export const initHealthServer = () => {
@@ -18,7 +18,6 @@ export const initHealthServer = () => {
     console.log('Server is listening on port ' + PORT)
   })
 
-  console.log(!serverUrl, isDev)
   if (!serverUrl || isDev) return
   setInterval(() => ping(serverUrl!), FOURTEEN_MINS)
 }
