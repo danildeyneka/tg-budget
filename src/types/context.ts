@@ -15,7 +15,7 @@ type Database = {
 export type MyContext = Context & {
   db: Database
   session: {
-    temp: Expense
+    expense: Expense
     nextStep: string
   }
 }

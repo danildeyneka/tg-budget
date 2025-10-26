@@ -5,7 +5,7 @@ export const sessionComposer = new Composer<MyContext>()
 
 sessionComposer.use(session({
   initial: () => ({
-    temp: {},
+    expense: {},
     nextStep: '',
   }),
 }))

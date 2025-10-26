@@ -30,7 +30,7 @@ async function addCategory(ctx: MyContext) {
     return
   }
 
-  ctx.session.temp.category = selectedCategory
+  ctx.session.expense.category = selectedCategory
   ctx.session.nextStep = ADD_EXPENSE_STEPS.PARTNER_TYPE
 
   const typeKeyboard = new Keyboard().oneTime()
@@ -53,7 +53,7 @@ async function addPartnerType(ctx: MyContext) {
     return
   }
 
-  ctx.session.temp.for = PARTNER_TYPES_NAMES_REVERSED[selectedType]!
+  ctx.session.expense.for = PARTNER_TYPES_NAMES_REVERSED[selectedType]!
   ctx.session.nextStep = ADD_EXPENSE_STEPS.SUM
 
   await ctx.reply('Введите сумму траты')
@@ -72,10 +72,10 @@ async function addSum(ctx: MyContext) {
     ctx,
   )
 
-  ctx.session.temp.sum = Math.round(+selectedSum)
+  ctx.session.expense.sum = Math.round(+selectedSum)
   ctx.session.nextStep = ADD_EXPENSE_STEPS.DATE
 
-  const lastDate = ctx.session.temp.date
+  const lastDate = ctx.session.expense.date
 
   const datesKeyboard = new Keyboard().oneTime()
     .resized()
@@ -94,7 +94,7 @@ async function addSum(ctx: MyContext) {
 
 async function addDate(ctx: MyContext) {
   const date = ctx.message?.text || ''
-  const lastDate = ctx.session.temp.date
+  const lastDate = ctx.session.expense.date
   const lastDateName = getLastDate(lastDate)
 
   const isValidString = [
@@ -112,18 +112,18 @@ async function addDate(ctx: MyContext) {
 
   switch (date) {
     case TODAY: {
-      ctx.session.temp.date = today
+      ctx.session.expense.date = today
       break
     }
     case YESTERDAY: {
-      ctx.session.temp.date = yesterday
+      ctx.session.expense.date = yesterday
       break
     }
     case lastDateName: {
       break
     }
     default: {
-      ctx.session.temp.date = date
+      ctx.session.expense.date = date
       break
     }
   }
@@ -145,14 +145,14 @@ async function addDate(ctx: MyContext) {
 async function addComment(ctx: MyContext) {
   const comment = (ctx.message?.text || '').trim()
 
-  if (comment && comment !== SKIP) ctx.session.temp.comment = comment
-  ctx.session.temp.from = ctx.from!.id
+  if (comment && comment !== SKIP) ctx.session.expense.comment = comment
+  ctx.session.expense.from = ctx.from!.id
 
-  await ctx.db.expenses.insertOne(ctx.session.temp)
+  await ctx.db.expenses.insertOne(ctx.session.expense)
 
-  const date = ctx.session.temp.date || ''
-  ctx.session.temp = {}
-  ctx.session.temp.date = date
+  const date = ctx.session.expense.date || ''
+  ctx.session.expense = {}
+  ctx.session.expense.date = date
   ctx.session.nextStep = ''
 
   await ctx.reply('Успех! Ваша покупка внесена в расходы')
