@@ -6,6 +6,7 @@ import { handleError } from '../helpers/errors.ts'
 import { loadHandlers } from '../helpers/load-handlers.ts'
 import { initHealthServer } from '../services/server/health-server.ts'
 import type { MyContext } from '../types/context.ts'
+import { initMenu } from './middleware/menu.ts'
 
 initHealthServer()
 
@@ -18,6 +19,8 @@ const bootstrap = async () => {
     bot,
     botHandlers,
   )
+  await initMenu(bot)
+
   bot.catch(err => handleError(err))
 
   await bot.start()
