@@ -9,11 +9,3 @@ export const PARTNER_TYPES_NAMES = {
   [PARTNER_TYPES.PARTNER]: 'На партнера',
   [PARTNER_TYPES.TOGETHER]: 'На нас',
 }
-
-export const PARTNER_TYPES_NAMES_REVERSED = Object.fromEntries(Object.entries(PARTNER_TYPES_NAMES).map(([
-  k,
-  v,
-]) => [
-  v,
-  k,
-]))

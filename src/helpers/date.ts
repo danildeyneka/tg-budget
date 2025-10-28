@@ -24,4 +24,4 @@ export const getDates = () => {
 
 export const getLastDate = (lastDate?: string) => `Прошлая выбранная дата - ${lastDate}`
 
-export const checkDate = (date: string) => (/^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.\d{4}$/).test(date)
+export const valiDate = (date: string) => (/^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.\d{4}$/).test(date)

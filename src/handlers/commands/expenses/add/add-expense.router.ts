@@ -2,11 +2,9 @@ import { Keyboard } from 'grammy'
 import {
   ADD_EXPENSE_STEPS,
 } from '../../../../constants/expenses/add-expense.ts'
-import {
-  PARTNER_TYPES_NAMES,
-  PARTNER_TYPES_NAMES_REVERSED,
-} from '../../../../constants/partners.ts'
-import { checkDate, getDates, getLastDate } from '../../../../helpers/date.ts'
+import { PARTNER_TYPES_NAMES } from '../../../../constants/partners.ts'
+import { getDates, getLastDate, valiDate } from '../../../../helpers/date.ts'
+import { revertKeyValOfObject } from '../../../../helpers/utils.ts'
 import type { MyContext } from '../../../../types/context.ts'
 import { reactOnSum } from './helpers.ts'
 
@@ -53,7 +51,7 @@ async function addPartnerType(ctx: MyContext) {
     return
   }
 
-  ctx.session.expense.for = PARTNER_TYPES_NAMES_REVERSED[selectedType]!
+  ctx.session.expense.for = revertKeyValOfObject(PARTNER_TYPES_NAMES)[selectedType]!
   ctx.session.nextStep = ADD_EXPENSE_STEPS.SUM
 
   await ctx.reply('Введите сумму траты')
@@ -103,7 +101,7 @@ async function addDate(ctx: MyContext) {
     lastDateName,
   ].includes(date)
 
-  if (!checkDate(date) && !isValidString) {
+  if (!valiDate(date) && !isValidString) {
     await ctx.reply('Введите валидную дату')
     return
   }
