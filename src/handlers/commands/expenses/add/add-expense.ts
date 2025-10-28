@@ -1,4 +1,5 @@
 import { Composer, Keyboard } from 'grammy'
+import { COMMANDS } from '../../../../constants/commands.ts'
 import {
   ADD_EXPENSE_STEPS,
 } from '../../../../constants/expenses/add-expense.ts'
@@ -9,7 +10,7 @@ import { addExpenseCallbacks } from './add-expense.router.ts'
 export const addExpenseComposer = new Composer<MyContext>()
 
 addExpenseComposer.command(
-  'add_expense',
+  COMMANDS.ADD_EXPENSE,
   async (ctx, next) => {
     const catKeyboard = new Keyboard().oneTime()
 

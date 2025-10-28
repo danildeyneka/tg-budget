@@ -1,4 +1,5 @@
 import { Composer, Keyboard } from 'grammy'
+import { COMMANDS } from '../../../../constants/commands.ts'
 import {
   PARTNER_TYPES,
   PARTNER_TYPES_NAMES,
@@ -12,7 +13,7 @@ import { createTotalExpensesRow, getPeriodStart } from './helpers.ts'
 export const totalExpensesComposer = new Composer<MyContext>()
 
 totalExpensesComposer.command(
-  'total_expenses',
+  COMMANDS.SHOW_EXPENSES,
   async (ctx, next) => {
     ctx.session.totalExpenses = []
     ctx.session.totalExpenses = await ctx.db.expenses.find({}).toArray()

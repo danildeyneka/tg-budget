@@ -1,10 +1,11 @@
 import { Composer } from 'grammy'
+import { COMMANDS } from '../../constants/commands.ts'
 import type { MyContext } from '../../types/context.ts'
 
 export const categoriesComposer = new Composer<MyContext>()
 
 categoriesComposer.command(
-  'categories',
+  COMMANDS.CATEGORIES,
   async (ctx) => {
     // add
     // delete
