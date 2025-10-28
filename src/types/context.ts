@@ -1,5 +1,5 @@
 import { Context } from 'grammy'
-import type { Collection } from 'mongodb'
+import type { Collection, WithId } from 'mongodb'
 import type { Categories } from './db/categories.ts'
 import type { WithData } from './db/common.ts'
 import type { Expense } from './db/expense.ts'
@@ -16,6 +16,7 @@ export type MyContext = Context & {
   db: Database
   session: {
     expense: Expense
+    totalExpenses: Array<WithId<Expense>>
     nextStep: string
   }
 }
