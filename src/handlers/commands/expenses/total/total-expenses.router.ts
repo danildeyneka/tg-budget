@@ -75,7 +75,7 @@ async function selectPeriod(ctx: MyContext) {
     }
   })
 
-  let table = `<b>Статистика расходов:</b>\n<i>${tempCategory}</i>\n${createTotalExpensesRow(
+  let table = `<b>Статистика расходов</b>\n<b>Категория: </b><i>${tempCategory}</i>\n<b>Период: </b><i>${period}</i>\n${createTotalExpensesRow(
     'Всего',
     totalSum,
     totalMineSum,
