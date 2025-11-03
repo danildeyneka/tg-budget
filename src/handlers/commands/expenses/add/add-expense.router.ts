@@ -1,11 +1,9 @@
 import { Keyboard } from 'grammy'
-import {
-  ADD_EXPENSE_STEPS,
-} from '../../../../constants/expenses/add-expense.ts'
 import { PARTNER_TYPES_NAMES } from '../../../../constants/partners.ts'
 import { getDates, getLastDate, valiDate } from '../../../../helpers/date.ts'
 import { revertKeyValOfObject } from '../../../../helpers/utils.ts'
 import type { MyContext } from '../../../../types/context.ts'
+import { ADD_EXPENSE_STEPS } from './constants.ts'
 import { reactOnSum } from './helpers.ts'
 
 const SKIP = 'Пропустить'

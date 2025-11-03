@@ -1,11 +1,9 @@
 import { Composer, Keyboard } from 'grammy'
 import { COMMANDS } from '../../../../constants/commands.ts'
-import {
-  ADD_EXPENSE_STEPS,
-} from '../../../../constants/expenses/add-expense.ts'
 import type { MyContext } from '../../../../types/context.ts'
 import { loadCallbacks } from '../../../callbacks/index.ts'
 import { addExpenseCallbacks } from './add-expense.router.ts'
+import { ADD_EXPENSE_STEPS } from './constants.ts'
 
 export const addExpenseComposer = new Composer<MyContext>()
 
