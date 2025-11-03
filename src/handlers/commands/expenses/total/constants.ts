@@ -1,4 +1,7 @@
-export const SHOW_EXPENSES_STEP = 'show_expenses'
+export const SHOW_EXPENSES_STEPS = {
+  CATEGORY: 'show_expenses_category',
+  PERIOD: 'show_expenses_period',
+}
 
 export const SHOW_EXPENSES_TYPES = {
   TOTAL: 'TOTAL',
@@ -23,3 +26,5 @@ export const SHOW_EXPENSES_NAMES = {
   [SHOW_EXPENSES_TYPES.YEAR]: 'Год',
   [SHOW_EXPENSES_TYPES.TOTAL]: 'Все время',
 }
+
+export const ALL_CATEGORIES = 'Все категории'
