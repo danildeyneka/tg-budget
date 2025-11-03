@@ -1,9 +1,9 @@
 import 'dotenv/config'
 
 import { Bot } from 'grammy'
-import { botHandlers } from '../handlers/index.ts'
+import { botComposers } from '../handlers/index.ts'
+import { loadComposers } from '../helpers/composers.ts'
 import { handleError } from '../helpers/errors.ts'
-import { loadHandlers } from '../helpers/load-handlers.ts'
 import { initHealthServer } from '../services/server/health-server.ts'
 import type { MyContext } from '../types/context.ts'
 import { initMenu } from './middleware/menu.ts'
@@ -15,10 +15,7 @@ const bootstrap = async () => {
 
   const bot = new Bot<MyContext>(isDev ? process.env.BOT_API_TOKEN_DEV! : process.env.BOT_API_TOKEN!)
 
-  loadHandlers(
-    bot,
-    botHandlers,
-  )
+  loadComposers(bot, botComposers)
   await initMenu(bot)
 
   bot.catch(err => handleError(err))

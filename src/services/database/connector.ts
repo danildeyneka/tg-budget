@@ -1,5 +1,5 @@
 import { Composer } from 'grammy'
-import { loadHandlers } from '../../helpers/load-handlers.ts'
+import { loadComposers } from '../../helpers/composers.ts'
 import type { MyContext } from '../../types/context.ts'
 import type { Categories } from '../../types/db/categories.ts'
 import type { WithData } from '../../types/db/common.ts'
@@ -29,7 +29,7 @@ databaseComposer.use(async (ctx, next) => {
   await next()
 })
 
-loadHandlers(
+loadComposers(
   databaseComposer,
   composers,
 )
