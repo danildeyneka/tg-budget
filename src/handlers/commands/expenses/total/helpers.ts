@@ -23,6 +23,8 @@ export const getPeriodStart = (period: string): number => {
     case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.MONTH]:
       date.setDate(date.getDate() - 30)
       break
+    case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.CURRENT_MONTH]:
+      return new Date(date.getFullYear(), date.getMonth(), 0).getTime()
     case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.QUARTER]:
       date.setDate(date.getDate() - 92)
       break
