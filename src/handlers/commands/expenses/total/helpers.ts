@@ -9,25 +9,34 @@ export const getPeriodStart = (period: string): number => {
 
   switch (period) {
     case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.DAY]:
-      return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
-    case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.TWO_DAYS]:
       date.setDate(date.getDate() - 1)
-      return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
+      break
+    case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.TWO_DAYS]:
+      date.setDate(date.getDate() - 2)
+      break
     case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.WEEK]:
-      date.setDate(date.getDate() - 6)
-      return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
+      date.setDate(date.getDate() - 7)
+      break
     case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.TWO_WEEKS]:
-      date.setDate(date.getDate() - 13)
-      return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
+      date.setDate(date.getDate() - 14)
+      break
     case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.MONTH]:
-      return new Date(date.getFullYear(), date.getMonth(), 1).getTime()
+      date.setDate(date.getDate() - 30)
+      break
     case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.QUARTER]:
-      return new Date(date.getFullYear(), Math.floor(date.getMonth() / 3) * 3, 1).getTime()
+      date.setDate(date.getDate() - 92)
+      break
     case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.HALF_YEAR]:
-      return new Date(date.getFullYear(), date.getMonth() < 6 ? 0 : 6, 1).getTime()
+      date.setDate(date.getDate() - 183)
+      break
     case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.YEAR]:
-      return new Date(date.getFullYear(), 0, 1).getTime()
-    default:
-      return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
+      date.setDate(date.getDate() - 365)
+      break
+    case SHOW_EXPENSES_NAMES[SHOW_EXPENSES_TYPES.TOTAL]:
+      return new Date(date.getFullYear() - 10, 0, 1).getTime()
   }
+
+  console.log(date.toLocaleString())
+
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
 }
