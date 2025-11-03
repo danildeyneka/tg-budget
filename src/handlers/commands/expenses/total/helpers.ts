@@ -36,7 +36,5 @@ export const getPeriodStart = (period: string): number => {
       return new Date(date.getFullYear() - 10, 0, 1).getTime()
   }
 
-  console.log(date.toLocaleString())
-
   return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
 }

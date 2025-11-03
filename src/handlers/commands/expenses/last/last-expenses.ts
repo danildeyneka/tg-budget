@@ -11,7 +11,6 @@ export const lastExpensesComposer = new Composer<MyContext>()
 
 lastExpensesComposer.command(COMMANDS.LAST_EXPENSES, async (ctx, next) => {
   const lastExpenses = await ctx.db.expenses.find({ from: ctx.from!.id }).sort({ _id: -1 }).limit(EXPENSES_LIMIT).toArray()
-  console.log(lastExpenses)
 
   await ctx.reply(formatExpensesTable(lastExpenses), {
     parse_mode: 'HTML',
