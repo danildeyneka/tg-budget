@@ -1,6 +1,6 @@
 import { CronJob as Cron, type CronJob } from 'cron'
-import { Composer, Keyboard } from 'grammy'
-import type { MyContext } from '../types/context.ts'
+import { Api, type Bot, Keyboard } from 'grammy'
+import type { MyContext } from '../../types/context.ts'
 
 class NotificationsService {
   private cronJob: CronJob | null = null
@@ -9,20 +9,19 @@ class NotificationsService {
     .resized()
     .text('/add_expense')
 
-  async broadcast(ctx: MyContext) {
+  async broadcast(api: Api) {
     for (const chat of this.chats) {
-      await ctx.api.sendMessage(chat, 'Не забудь внести расходы!',
+      await api.sendMessage(chat, 'Не забудь внести расходы!',
         {
           reply_markup: this.cmdKeyboard,
         })
     }
   }
 
-  start(ctx: MyContext) {
+  start(api: Api) {
     if (this.cronJob) return
-
     this.cronJob = new Cron('0 22 * * *', async () => {
-      await this.broadcast(ctx)
+      await this.broadcast(api)
     }, null, true)
   }
 
@@ -33,10 +32,6 @@ class NotificationsService {
 
 export const notificationsService = new NotificationsService()
 
-export const notificationsServiceComposer = new Composer<MyContext>()
-
-notificationsServiceComposer.use(async (ctx, next) => {
-  notificationsService.start(ctx)
-
-  await next()
-})
+export const notifications = async (bot: Bot<MyContext>) => {
+  notificationsService.start(bot.api)
+}

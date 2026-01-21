@@ -1,6 +1,6 @@
 import { Composer } from 'grammy'
-import type { MyContext } from '../types/context.ts'
-import type { Categories } from '../types/db/categories.ts'
+import type { MyContext } from '../../types/context.ts'
+import type { Categories } from '../../types/db/categories.ts'
 
 class CategoriesService {
   private cachedCategories: Categories = []

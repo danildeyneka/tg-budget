@@ -6,7 +6,7 @@ import { loadComposers } from '../helpers/composers.ts'
 import { handleError } from '../helpers/errors.ts'
 import { initHealthServer } from '../services/server/health-server.ts'
 import type { MyContext } from '../types/context.ts'
-import { initMenu } from './middleware/menu.ts'
+import { initMiddleware } from './middleware/index.ts'
 
 initHealthServer()
 
@@ -16,7 +16,7 @@ const bootstrap = async () => {
   const bot = new Bot<MyContext>(isDev ? process.env.BOT_API_TOKEN_DEV! : process.env.BOT_API_TOKEN!)
 
   loadComposers(bot, botComposers)
-  await initMenu(bot)
+  await initMiddleware(bot)
 
   bot.catch(err => handleError(err))
 
