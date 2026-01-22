@@ -20,7 +20,7 @@ class NotificationsService {
 
   start(api: Api) {
     if (this.cronJob) return
-    this.cronJob = new Cron('0 22 * * *', async () => {
+    this.cronJob = new Cron('0 18 * * *', async () => {
       await this.broadcast(api)
     }, null, true)
   }
