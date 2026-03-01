@@ -5,7 +5,7 @@ import { PARTNER_TYPES_NAMES } from '../../../../constants/partners.ts'
 import type { MyContext } from '../../../../types/context.ts'
 import type { Expense } from '../../../../types/db/expense.ts'
 
-const EXPENSES_LIMIT = 5
+const EXPENSES_LIMIT = 10
 
 export const lastExpensesComposer = new Composer<MyContext>()
 
@@ -21,7 +21,7 @@ lastExpensesComposer.command(COMMANDS.LAST_EXPENSES, async (ctx, next) => {
 function formatExpensesTable(expenses: Array<Expense>) {
   let message = ''
   let total = 0
-  message += `${'-'.repeat(7)} Последние 5 расходов ${'-'.repeat(7)}\n`
+  message += `${'-'.repeat(7)} Последние 10 расходов ${'-'.repeat(7)}\n`
 
   expenses.forEach((expense) => {
     const date = expense.date
