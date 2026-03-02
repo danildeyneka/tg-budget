@@ -6,6 +6,7 @@ export const dateFormatter = (date = new Date()) => new Intl.DateTimeFormat(
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
+    timeZone: 'Asia/Yekaterinburg',
   },
 ).format(date)
   .replaceAll(
