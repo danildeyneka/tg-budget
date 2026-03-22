@@ -18,6 +18,8 @@ const bootstrap = async () => {
   loadComposers(bot, botComposers)
   await initMiddleware(bot)
 
+  console.log('Bot is running')
+
   bot.catch(err => handleError(err))
 
   await bot.start()
