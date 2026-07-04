@@ -81,7 +81,7 @@ async function addSum(ctx: MyContext) {
   if (lastDate) datesKeyboard.text(getLastDate(lastDate))
 
   await ctx.reply(
-    'Выберите дату или введите вручную (dd.mm.yyyy)',
+    'Выберите дату или введите вручную (dd.mm)',
     {
       reply_markup: datesKeyboard,
     },
@@ -89,7 +89,7 @@ async function addSum(ctx: MyContext) {
 }
 
 async function addDate(ctx: MyContext) {
-  const date = ctx.message?.text || ''
+  const date = ctx.message?.text + (ctx.message?.text?.split('.')[2]?.length === 4 ? '' : ('.' + new Date().getFullYear()))
   const lastDate = ctx.session.expense.date
   const lastDateName = getLastDate(lastDate)
 
