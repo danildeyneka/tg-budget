@@ -89,15 +89,15 @@ async function addSum(ctx: MyContext) {
 }
 
 async function addDate(ctx: MyContext) {
-  const date = ctx.message?.text + (ctx.message?.text?.split('.')[2]?.length === 4 ? '' : ('.' + new Date().getFullYear()))
+  const msg = ctx.message?.text || ''
   const lastDate = ctx.session.expense.date
   const lastDateName = getLastDate(lastDate)
-
   const isValidString = [
     TODAY,
     YESTERDAY,
     lastDateName,
-  ].includes(date)
+  ].includes(msg)
+  const date = isValidString ? msg : msg + (msg.split('.')[2]?.length === 4 ? '' : ('.' + new Date().getFullYear()))
 
   if (!valiDate(date) && !isValidString) {
     await ctx.reply('Введите валидную дату')
