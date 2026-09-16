@@ -5,4 +5,5 @@ export type Expense = {
   date?: string
   comment?: string
   from?: number
+  createdAt?: number // was inactive for a year
 }

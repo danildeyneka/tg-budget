@@ -143,6 +143,7 @@ async function addComment(ctx: MyContext) {
 
   if (comment && comment !== SKIP) ctx.session.expense.comment = comment
   ctx.session.expense.from = ctx.from!.id
+  ctx.session.expense.createdAt = Date.now()
 
   await ctx.db.expenses.insertOne(ctx.session.expense)
 
