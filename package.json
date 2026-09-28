@@ -15,10 +15,13 @@
   "type": "module",
   "main": "src/core/bot.ts",
   "scripts": {
-    "start": "node --experimental-strip-types --watch src/core/bot.ts"
+    "start": "node --experimental-strip-types --watch src/core/bot.ts",
+    "test": "node --experimental-strip-types --test"
   },
   "dependencies": {
     "@grammyjs/storage-mongodb": "^2.5.1",
+    "chart.js": "^4.5.1",
+    "chartjs-node-canvas": "^5.0.0",
     "cron": "^4.4.0",
     "dotenv": "^17.2.2",
     "grammy": "^1.38.2",
