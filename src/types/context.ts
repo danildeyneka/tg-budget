@@ -17,6 +17,8 @@ export type MyContext = Context & {
   session: {
     expense: Expense
     totalExpenses: Array<WithId<Expense>>
+    editExpenseId: string
+    editExpenseField: string
     nextStep: string
   }
 }

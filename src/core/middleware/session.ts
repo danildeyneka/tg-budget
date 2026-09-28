@@ -9,6 +9,8 @@ sessionComposer.use(session({
   initial: () => ({
     expense: {},
     totalExpenses: [] as Array<WithId<Expense>>,
+    editExpenseId: '',
+    editExpenseField: '',
     nextStep: '',
   }),
 }))
