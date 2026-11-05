@@ -7,6 +7,7 @@ import { routerComposer } from './callbacks/index.ts'
 import { categoriesComposer } from './commands/categories.ts'
 import { expensesComposer } from './commands/expenses/index.ts'
 import { startComposer } from './commands/start.ts'
+import { remindersComposer } from './commands/reminders/reminders.ts'
 
 export const botComposers: Array<Composer<MyContext>> = [
   accessComposer,
@@ -17,4 +18,5 @@ export const botComposers: Array<Composer<MyContext>> = [
 
   startComposer,
   expensesComposer,
+  remindersComposer,
 ]

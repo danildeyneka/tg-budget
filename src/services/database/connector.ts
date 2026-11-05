@@ -5,6 +5,7 @@ import type { Categories } from '../../types/db/categories.ts'
 import type { WithData } from '../../types/db/common.ts'
 import type { Expense } from '../../types/db/expense.ts'
 import type { User } from '../../types/db/users.ts'
+import type { Reminder } from '../../types/db/reminder.ts'
 import { categoriesServiceComposer } from './categories.ts'
 import { mongoDb } from './mongo.ts'
 
@@ -20,7 +21,7 @@ databaseComposer.use(async (ctx, next) => {
   const categoriesWorker = db.collection<WithData<Categories>>('categories')
 
   ctx.db = {
-    users, expenses, categoriesWorker, categories: [],
+    users, expenses, categoriesWorker, categories: [], reminders: db.collection<Reminder>('reminders'),
   }
 
   await next()

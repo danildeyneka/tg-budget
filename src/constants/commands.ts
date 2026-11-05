@@ -1,5 +1,6 @@
 export const COMMANDS = {
   START: 'start',
+  REMINDERS: 'reminders',
   ADD_EXPENSE: 'add_expense',
   EDIT_EXPENSE: 'edit_expense',
   CATEGORIES: 'categories',
@@ -9,6 +10,7 @@ export const COMMANDS = {
 }
 
 export const COMMANDS_NAMES = {
+  [COMMANDS.REMINDERS]: 'Напоминания',
   [COMMANDS.ADD_EXPENSE]: 'Добавить расход',
   [COMMANDS.EDIT_EXPENSE]: 'Редактировать последнюю трату',
   // [COMMANDS.ADD_EXPENSE]: 'Изменить расход',
